@@ -7,10 +7,11 @@ import CustomExceptions.*;
 import Ramps.TransporterRamp;
 import Utility.CarStorage;
 import Utility.IPositionable;
+import Vehicles.IVehicle;
 import Vehicles.Movable;
 import Vehicles.Cars.ICar;
 
-public class Transporter implements Movable, IPositionable {
+public class Transporter implements IVehicle {
     private Truck truck;
     private int maxAngle;
 

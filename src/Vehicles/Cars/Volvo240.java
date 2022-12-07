@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 import Vehicles.Movable;
 
-public class Volvo240 implements ICar, Movable {
+public class Volvo240 implements ICar {
 
     private TrimCar trimCar;
 

@@ -4,9 +4,10 @@ import java.awt.Color;
 
 import Ramps.StandardTruckRamp;
 import Utility.IPositionable;
+import Vehicles.IVehicle;
 import Vehicles.Movable;
 
-public class Scania implements Movable, IPositionable {
+public class Scania implements IVehicle {
     private Truck truck;
     private int maxAngle;
 

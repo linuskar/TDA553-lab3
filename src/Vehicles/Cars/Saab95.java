@@ -4,9 +4,9 @@ import java.awt.*;
 
 import java.math.BigDecimal;
 
-import Vehicles.Movable;
 
-public class Saab95 implements ICar, Movable {
+
+public class Saab95 implements ICar {
     private TurboCar turboCar;
 
     public Saab95(double enginePower, Color color, double x, double y) {
