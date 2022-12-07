@@ -1,7 +1,5 @@
 package Vehicles;
 
-import Utility.IPositionable;
-
 public interface IVehicle extends Movable {
     void gas(double amount);
 

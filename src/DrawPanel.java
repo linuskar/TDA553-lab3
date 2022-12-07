@@ -16,14 +16,12 @@ import Vehicles.Trucks.Scania;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
     // To keep track of a singel cars position
     Map<IVehicle, BufferedImage> vehicles = new HashMap<IVehicle, BufferedImage>();
 
-    // TODO: Make this genereal for all cars
     void putVehicle(IVehicle vehicle) {
         if (vehicle instanceof Volvo240){
             vehicles.put(vehicle, volvoImage);
