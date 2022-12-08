@@ -17,35 +17,42 @@ public class Scania implements IVehicle {
     }
 
     // --------- delegated methods -----------------
-
+    @Override
     public double getCurrentSpeed() {
         return truck.getCurrentSpeed();
     }
-
+    
+    @Override
     public void brake(double amount) {
         truck.brake(amount);
     }
 
+    @Override
     public double getEnginePower() {
         return truck.getEnginePower();
     }
 
+    @Override
     public double getX() {
         return truck.getX();
     }
 
+    @Override
     public double getY() {
         return truck.getY();
     }
 
+    @Override
     public void move() {
         truck.move();
     }
 
+    @Override
     public void turnLeft() {
         truck.turnLeft();
     }
 
+    @Override
     public void turnRight() {
         truck.turnRight();
     }
@@ -55,13 +62,14 @@ public class Scania implements IVehicle {
      * 
      * @param amount
      */
+     @Override
     public void gas(double amount) {
         truck.gas(amount);
 
     }
 
     // -------- Methods with own implementation ------------
-
+    
     public int getRampAngle() {
         return truck.getRamp().getRampAngle();
     }

@@ -47,8 +47,7 @@ public abstract class Positionable implements IPositionable {
         return getBigDecimalY().doubleValue();
     }
 
-    protected void setY(double y) {
-        
+    protected void setY(double y) {    
         setY(BigDecimal.valueOf(y));
     }
 

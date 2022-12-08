@@ -22,7 +22,7 @@ public class Truck extends Vehicle {
     @Override
     // Methods for changing the speed of a Truck
     public void gas(double amount) {
-        if (!getRamp().rampIsInDrivingPosition()) {
+        if (ramp.rampIsInDrivingPosition()) {
             throw new RampIsNotInCorrectPositionException("The ramp is not in correct position when moving");
         } 
         else {
@@ -30,10 +30,13 @@ public class Truck extends Vehicle {
         }
     }
 
-    public Ramp getRamp() {
-        return ramp;
-    }
+    // public Ramp getRamp() {
+    //     return ramp;
+    // }
 
+    public boolean getRampIsInDrivingPosition() {
+        return ramp.rampIsInDrivingPosition();
+    }
     // Sets ramp to its highest position which is the maxAngle.
     public void raiseRampToMax() {
         if (getCurrentSpeed() == 0)

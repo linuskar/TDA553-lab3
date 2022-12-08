@@ -13,9 +13,9 @@ import Vehicles.Cars.ICar;
 
 public class Transporter implements IVehicle {
     private Truck truck;
+    private CarStorage carStorage;
     private int maxAngle;
 
-    private CarStorage carStorage;
 
     public Transporter(double enginePower, Color color, int nrDoors, double x, double y) {
         maxAngle = 0;
@@ -45,7 +45,7 @@ public class Transporter implements IVehicle {
     }
 
     public boolean getRampIsInDrivingPosition() {
-        return truck.getRamp().rampIsInDrivingPosition();
+        return truck.getRampIsInDrivingPosition();
     }
 
     @Override
