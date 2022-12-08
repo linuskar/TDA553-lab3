@@ -38,10 +38,12 @@ public class Saab95 implements ICar {
         turboCar.brake(amount);
     }
 
+    @Override
     public double getEnginePower() {
         return turboCar.getEnginePower();
     }
-
+    
+    @Override
     public double getCurrentSpeed() {
         return turboCar.getCurrentSpeed();
     }

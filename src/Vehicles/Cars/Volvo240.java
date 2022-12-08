@@ -39,10 +39,12 @@ public class Volvo240 implements ICar {
         trimCar.brake(amount);
     }
 
+    @Override
     public double getEnginePower() {
         return trimCar.getEnginePower();
     }
-
+    
+    @Override
     public double getCurrentSpeed() {
         return trimCar.getCurrentSpeed();
     }

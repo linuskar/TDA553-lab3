@@ -24,19 +24,22 @@ public class Transporter implements IVehicle {
     }
 
     // ------------ delegated methods -------------
-
+    @Override
     public double getCurrentSpeed() {
         return truck.getCurrentSpeed();
     }
 
+    @Override
     public double getEnginePower() {
         return truck.getEnginePower();
     }
 
+    @Override
     public double getX() {
         return truck.getX();
     }
 
+    @Override
     public double getY() {
         return truck.getY();
     }
@@ -45,18 +48,22 @@ public class Transporter implements IVehicle {
         return truck.getRamp().rampIsInDrivingPosition();
     }
 
+    @Override
     public void move() {
         truck.move();
     }
 
+    @Override
     public void turnLeft() {
         truck.turnLeft();
     }
 
+    @Override
     public void turnRight() {
         truck.turnRight();
     }
 
+    @Override
     public void brake(double amount) {
         truck.brake(amount);
     }
@@ -70,7 +77,8 @@ public class Transporter implements IVehicle {
     }
 
     // ----------- methods with own implementation ---------
-
+    
+    @Override
     public void gas(double amount) {
         truck.gas(amount);
     }
