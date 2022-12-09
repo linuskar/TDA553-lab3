@@ -12,7 +12,7 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController implements ActionListener {
+public class CarController{
     // member fields:
 
     // The frame that represents this instance View of the MVC pattern
@@ -26,11 +26,7 @@ public class CarController implements ActionListener {
     public CarController(CarModel carModel){
         this.carModel = carModel;
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-            carModel.update();
-        }
+
 
     //methods:
 

@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import Vehicles.IVehicle;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,12 +16,12 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements CarObserver{
     private static final int X = 800;
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    CarModel carModel;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -40,8 +43,8 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
+    public CarView(String framename, CarModel carModel){
+        this.carModel = carModel;
         initComponents(framename);
     }
 
@@ -100,15 +103,16 @@ public class CarView extends JFrame{
         this.add(stopButton);
 
 
-
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                gas(gasAmount);
             }
         });
+
+
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
@@ -121,5 +125,24 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public void updateObserver() {
+        // TODO Auto-generated method stub          
+        for (IVehicle vehicle : carModel.getVehicles()) {
+            drawPanel.putVehicle(vehicle);
+        }
+
+        repaint();
+        
+    }
+    
+    //temporär gas innan flyttning av buttons till CarController.
+    public void gas(int amount) {
+        double gas = ((double) amount) / 100;
+        for (IVehicle car : carModel.getVehicles()) {
+            car.gas(gas);
+        }
     }
 }
