@@ -121,13 +121,13 @@ public class TransporterTest {
 
     @Test
     public void ramp_raises_when_raised() {
-        Transporter.raiseRamp();
+        Transporter.raiseRampToMax();
         assertTrue(Transporter.getRampIsInDrivingPosition());
     }
 
     @Test
     public void ramp_lowers_when_lowered() {
-        Transporter.lowerRamp();
+        Transporter.lowerRampToMin();
         assertFalse(Transporter.getRampIsInDrivingPosition());
     }
 
@@ -138,7 +138,7 @@ public class TransporterTest {
                 new Volvo240(0, null, 0, 0), new Volvo240(0, null, 0, 0), new Volvo240(0, null, 0, 0),
                 new Volvo240(0, null, 0, 0) };
 
-        Transporter.lowerRamp();
+        Transporter.lowerRampToMin();
         
         assertThrows(CarStorageFullException.class, () -> {
             for (ICar car : myCars) {
@@ -150,7 +150,7 @@ public class TransporterTest {
     @Test
     public void cant_load_same_car_twice_in_the_transporter() {
         ICar myVolvo = new Volvo240(0, null, 0, 0);
-        Transporter.lowerRamp();
+        Transporter.lowerRampToMin();
         assertThrows(CarIsAlreadyLoadedException.class, () -> {
             Transporter.loadCar(myVolvo);
             Transporter.loadCar(myVolvo);
@@ -163,9 +163,9 @@ public class TransporterTest {
         double prevY = 0;
         ICar myVolvo = new Volvo240(0, null, prevX, prevY);
         
-        Transporter.lowerRamp();
+        Transporter.lowerRampToMin();
         Transporter.loadCar(myVolvo);
-        Transporter.raiseRamp();
+        Transporter.raiseRampToMax();
         Transporter.gas(1);
         Transporter.move();
 
@@ -173,7 +173,7 @@ public class TransporterTest {
             Transporter.brake(1);
         }
 
-        Transporter.lowerRamp();
+        Transporter.lowerRampToMin();
         Transporter.unLoadCar(myVolvo);
 
         assertFalse(prevX == myVolvo.getX());

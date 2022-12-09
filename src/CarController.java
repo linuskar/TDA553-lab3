@@ -5,7 +5,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.*;
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -19,7 +18,6 @@ public class CarController{
     // The frame that represents this instance View of the MVC pattern
     
     // A list of cars, modify if needed
-    //ArrayList<IVehicle> cars = new ArrayList<>();
 
     private CarModel carModel;
     private CarView frame;
@@ -64,6 +62,10 @@ public class CarController{
 
 
     //methods:
+
+    /** 
+        This is method that creates the grid panel. 
+     */
     public void makeButtonsGrid(){
         controlPanelGrid.setLayout(new GridLayout(2,4));
         controlPanelGrid.add(gasButton, 0);
@@ -76,7 +78,6 @@ public class CarController{
         controlPanelGrid.setBackground(Color.CYAN);
        
         frame.add(controlPanelGrid);
-        //frame.setVisible(true);
     }
     public void makeGasInputSpinner(){
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
@@ -90,11 +91,7 @@ public class CarController{
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-        //gasPanel.setPreferredSize(new Dimension((frame.getX()/2), 200));
         frame.add(gasPanel);
-
-
-        //frame.setVisible(true);
     }
 
     public void addButtonsAsActionListener(){
@@ -121,35 +118,18 @@ public class CarController{
 
         frame.add(stopButton);
 
-        //frame.setVisible(true);
+
     }
-    // public static void main(String[] args) {
-    //     // Instance of this class
-    //     CarController cc = new CarController();
-        
-    //     // Start a new view and send a reference of self
-    //     cc.frame = new CarView("CarSim 1.0", cc);
-        
-    //     for (IVehicle car : cc.cars) {
-    //         System.out.println(car.getEnginePower());
-    //         cc.frame.drawPanel.putVehicle(car);
-    //     }
-    
-    //     // Start the timer
-    //     cc.timer.start();
-    // }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    private void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (IVehicle vehicle : carModel.getVehicles()) {
             vehicle.gas(gas);
         }
-    }
-
- 
+    } 
 }

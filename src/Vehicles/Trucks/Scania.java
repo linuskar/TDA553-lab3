@@ -7,13 +7,13 @@ import Utility.IPositionable;
 import Vehicles.IVehicle;
 import Vehicles.Movable;
 
-public class Scania implements IVehicle {
-    private Truck truck;
+public class Scania implements ITruckWithAngleableRamp {
+    private TruckWithAngleableRamp truck;
     private int maxAngle;
 
     public Scania(double enginePower, Color color, double x, double y) {
         this.maxAngle = 70;
-        this.truck = new Truck("Scania", enginePower, color, 2, x, y, maxAngle, new StandardTruckRamp());
+        this.truck = new TruckWithAngleableRamp("Scania", enginePower, color, 2, x, y);
     }
 
     // --------- delegated methods -----------------
@@ -69,30 +69,39 @@ public class Scania implements IVehicle {
     }
 
     // -------- Methods with own implementation ------------
-    
-    public int getRampAngle() {
-        return truck.getRamp().getRampAngle();
-    }
 
     // raises ramp according to degrees only if current speed is zero.
     public void raiseRamp(int degrees) {
         if (getCurrentSpeed() == 0) {
-            truck.getRamp().raiseRamp(degrees);
+            truck.raiseRamp(degrees);
         }
     }
 
     public void lowerRamp(int degrees) {
-        truck.getRamp().lowerRamp(degrees);
+        truck.lowerRamp(degrees);
     }
 
+    @Override
     public void raiseRampToMax() {
-        if (getCurrentSpeed() == 0)
+        if (getCurrentSpeed() == 0) {
             truck.raiseRampToMax();
+        }
     }
 
+    @Override
     // when no argument is thrown sets
     public void lowerRampToMin() {
-        if (getCurrentSpeed() == 0)
-            truck.lowerRampToMin();
+        truck.lowerRampToMin();
+    }
+
+    @Override
+    public boolean getRampIsInDrivingPosition() {
+        return truck.getRampIsInDrivingPosition();
+    }
+
+    @Override
+    public int getRampAngle() {
+        // TODO Auto-generated method stub
+        return truck.getRampAngle();
     }
 }

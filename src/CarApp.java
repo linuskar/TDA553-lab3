@@ -1,4 +1,3 @@
-import Vehicles.IVehicle;
 import Vehicles.Cars.Saab95;
 import Vehicles.Cars.Volvo240;
 import Vehicles.Trucks.Scania;
@@ -9,9 +8,11 @@ public class CarApp {
     public static void main(String[] args) {
         // Instance of model class
         CarModel carModel = new CarModel();
+
         // Instance of the view which then gets added as an observer to the model
         CarView carView = new CarView("CarSim", carModel);
         carModel.addObserver(carView);
+
         // Instance of controller class
         CarController controller = new CarController(carModel, carView);
         controller.makeGasInputSpinner();
@@ -29,7 +30,6 @@ public class CarApp {
     
     
         // Start the timer
-        //carModel.update();
         carModel.start();
 
     }

@@ -1,12 +1,8 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import Vehicles.IVehicle;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -24,23 +20,6 @@ public class CarView extends JFrame implements CarObserver{
     CarModel carModel;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
-
-    // JPanel controlPanel = new JPanel();
-
-    // JPanel gasPanel = new JPanel();
-    // JSpinner gasSpinner = new JSpinner();
-    // int gasAmount = 0;
-    // JLabel gasLabel = new JLabel("Amount of gas");
-
-    // JButton gasButton = new JButton("Gas");
-    // JButton brakeButton = new JButton("Brake");
-    // JButton turboOnButton = new JButton("Saab Turbo on");
-    // JButton turboOffButton = new JButton("Saab Turbo off");
-    // JButton liftBedButton = new JButton("Scania Lift Bed");
-    // JButton lowerBedButton = new JButton("Lower Lift Bed");
-
-    // JButton startButton = new JButton("Start all cars");
-    // JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
     public CarView(String framename, CarModel carModel){
@@ -84,12 +63,4 @@ public class CarView extends JFrame implements CarObserver{
 
         repaint();
     }
-    
-    // //temporär gas innan flyttning av buttons till CarController.
-    // public void gas(int amount) {
-    //     double gas = ((double) amount) / 100;
-    //     for (IVehicle car : carModel.getVehicles()) {
-    //         car.gas(gas);
-    //     }
-    // }
 }
