@@ -4,18 +4,17 @@ import java.awt.Color;
 import java.util.Stack;
 
 import CustomExceptions.*;
+import Ramps.TransporterRamp;
 import Utility.CarStorage;
 import Vehicles.Cars.ICar;
 
 public class Transporter implements ITruck {
     private Truck truck;
     private CarStorage carStorage;
-    private int maxAngle;
 
 
     public Transporter(double enginePower, Color color, int nrDoors, double x, double y) {
-        maxAngle = 0;
-        truck = new TruckWithTwoState("Transporter", enginePower, color, nrDoors, x, y);
+        truck = new Truck("Transporter", enginePower, color, nrDoors, x, y, new TransporterRamp());
         carStorage = new CarStorage(7, new Stack<ICar>(), 30);
     }
 
@@ -74,13 +73,11 @@ public class Transporter implements ITruck {
 
     @Override
     public void raiseRampToMax() {
-        // TODO Auto-generated method stub
         truck.raiseRampToMax();
     }
 
     @Override
     public void lowerRampToMin() {
-        // TODO Auto-generated method stub
         truck.lowerRampToMin();
     }
     // ----------- methods with own implementation ---------

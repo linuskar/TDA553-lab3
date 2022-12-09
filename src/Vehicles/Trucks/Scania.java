@@ -3,17 +3,14 @@ package Vehicles.Trucks;
 import java.awt.Color;
 
 import Ramps.StandardTruckRamp;
-import Utility.IPositionable;
-import Vehicles.IVehicle;
-import Vehicles.Movable;
 
-public class Scania implements ITruckWithAngleableRamp {
-    private TruckWithAngleableRamp truck;
-    private int maxAngle;
+public class Scania implements ITruck, HasAngleableRamp {
+    private Truck truck;
+    //private int maxAngle;
 
     public Scania(double enginePower, Color color, double x, double y) {
-        this.maxAngle = 70;
-        this.truck = new TruckWithAngleableRamp("Scania", enginePower, color, 2, x, y);
+        //this.maxAngle = 70;
+        this.truck = new Truck("Scania", enginePower, color, 2, x, y, new StandardTruckRamp());
     }
 
     // --------- delegated methods -----------------
@@ -45,6 +42,7 @@ public class Scania implements ITruckWithAngleableRamp {
     @Override
     public void move() {
         truck.move();
+        
     }
 
     @Override

@@ -1,6 +1,6 @@
 package Vehicles.Trucks;
 
-public interface ITruckWithAngleableRamp extends ITruck{
+public interface HasAngleableRamp{
     void lowerRamp(int degrees);
 
     void raiseRamp(int degrees);

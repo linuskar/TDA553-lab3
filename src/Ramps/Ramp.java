@@ -1,6 +1,6 @@
 package Ramps;
 
-public abstract class Ramp {
+public abstract class Ramp implements IRamp {
     private RampState rampStateWhenDriving;
     private int rampAngle;
     private final int MAX_ANGLE;

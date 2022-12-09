@@ -3,17 +3,15 @@ package Vehicles.Trucks;
 import java.awt.Color;
 
 import CustomExceptions.RampIsNotInCorrectPositionException;
-import Ramps.Ramp;
+import Ramps.IRamp;
 import Vehicles.Vehicle;
 
-public abstract class Truck extends Vehicle implements ITruck {
-    private Ramp ramp;
-    private int maxAngle;
+public class Truck extends Vehicle implements ITruck, HasAngleableRamp {
+    private IRamp ramp;
 
-    Truck(String modelname, double enginePower, Color color, int nrDoors, double x, double y, int maxAngle, Ramp ramp) {
+    Truck(String modelname, double enginePower, Color color, int nrDoors, double x, double y,IRamp ramp) {
         super(modelname, enginePower, color, nrDoors, x, y);
         this.ramp = ramp;
-        this.maxAngle = maxAngle;
     }
 
     @Override
@@ -36,7 +34,17 @@ public abstract class Truck extends Vehicle implements ITruck {
     public boolean getRampIsInDrivingPosition() {
         return ramp.rampIsInDrivingPosition();
     }
-    
+
+    @Override
+    public void raiseRamp(int degrees) {
+        ramp.raiseRamp(degrees);
+    }
+
+    @Override
+    public void lowerRamp(int degrees) {
+        ramp.raiseRamp(degrees);
+    }
+
     // Sets ramp to its highest position which is the maxAngle.
     @Override
     public void raiseRampToMax() {
@@ -49,5 +57,10 @@ public abstract class Truck extends Vehicle implements ITruck {
     public void lowerRampToMin() {
         if (getCurrentSpeed() == 0)
             ramp.lowerRampToMin();
+    }
+
+    @Override
+    public int getRampAngle() {
+        return ramp.getRampAngle();
     }
 }
