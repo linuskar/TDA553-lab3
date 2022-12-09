@@ -19,8 +19,8 @@ public class Truck extends Vehicle implements ITruck, HasAngleableRamp {
         return getEnginePower() * 0.01;
     }
 
-    @Override
-    // Methods for changing the speed of a Truck
+    @Override 
+    /**  Method for changing the speed of a Truck */
     public void gas(double amount) {
         if (!ramp.rampIsInDrivingPosition()) {
             throw new RampIsNotInCorrectPositionException("The ramp is not in correct position when moving");
@@ -45,14 +45,14 @@ public class Truck extends Vehicle implements ITruck, HasAngleableRamp {
         ramp.raiseRamp(degrees);
     }
 
-    // Sets ramp to its highest position which is the maxAngle.
+    /** Sets ramp to its highest position which is the maxAngle. */
     @Override
     public void raiseRampToMax() {
         if (getCurrentSpeed() == 0)
             ramp.raiseRampToMax();
     }
 
-    // Sets ramp to its lowest position which is 0.
+    /** Sets ramp to its lowest position which is 0. */ 
     @Override
     public void lowerRampToMin() {
         if (getCurrentSpeed() == 0)

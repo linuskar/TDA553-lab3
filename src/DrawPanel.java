@@ -12,15 +12,16 @@ import Vehicles.Cars.Saab95;
 import Vehicles.Cars.Volvo240;
 import Vehicles.Trucks.Scania;
 
-// This panel represent the animated part of the view with the car images.
-
+/**  This panel represent the animated part of the view with the car images.*/
 public class DrawPanel extends JPanel{
-
+    //Images for the vehicles
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
-    // To keep track of a singel cars position
+    
+    // To attach the images to each vehicle type
     Map<IVehicle, BufferedImage> vehicles = new HashMap<IVehicle, BufferedImage>();
+
 
     void putVehicle(IVehicle vehicle) {
         if (vehicle instanceof Volvo240){
@@ -33,19 +34,13 @@ public class DrawPanel extends JPanel{
         
     }
 
-    // Initializes the panel and reads the images
+    /** Initializes the panel and reads the images */
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         // Print an error message in case file is not found with a try/catch block
         try {
-            // You can remove the "pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-            // Remember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-            // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
@@ -56,9 +51,7 @@ public class DrawPanel extends JPanel{
         }
 
     }
-
-    // This method is called each time the panel updates/refreshes/repaints itself
-    
+    /** This method is called each time the panel updates/refreshes/repaints itself */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

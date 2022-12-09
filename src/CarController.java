@@ -6,20 +6,13 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
- */
 
-public class CarController{
-    // member fields:
 
-    // The frame that represents this instance View of the MVC pattern
-    
-    // A list of cars, modify if needed
-
+public class CarController {
+    // The model of the MVC pattern
     private CarModel carModel;
+
+    // The frame that represents this instance view of the MVC pattern
     private CarView frame;
 
     private JButton gasButton;
@@ -39,10 +32,10 @@ public class CarController{
     private JLabel gasLabel;
 
     // Constructor
-    public CarController(CarModel carModel, CarView carView){
+    public CarController(CarModel carModel, CarView carView) {
         this.carModel = carModel;
         this.frame = carView;
-        
+
         gasButton = new JButton("Gas");
         brakeButton = new JButton("Brake");
         turboOnButton = new JButton("Saab Turbo on");
@@ -50,41 +43,44 @@ public class CarController{
         liftBedButton = new JButton("Scania Lift Bed");
         lowerBedButton = new JButton("Lower Lift Bed");
         controlPanelGrid = new JPanel();
-        
+
         startButton = new JButton("Start all cars");
         stopButton = new JButton("Stop all cars");
 
         gasPanel = new JPanel();
-        gasSpinner = new JSpinner();  
+        gasSpinner = new JSpinner();
         gasAmount = 0;
         gasLabel = new JLabel("Amount of gas");
     }
 
+    // Methods
 
-    //methods:
-
-    /** 
-        This is method that creates the grid panel. 
+    /**
+     * This is a method that creates the grid panel.
      */
-    public void makeButtonsGrid(){
-        controlPanelGrid.setLayout(new GridLayout(2,4));
+    public void makeButtonsGrid() {
+        controlPanelGrid.setLayout(new GridLayout(2, 4));
         controlPanelGrid.add(gasButton, 0);
         controlPanelGrid.add(turboOnButton, 1);
         controlPanelGrid.add(liftBedButton, 2);
         controlPanelGrid.add(brakeButton, 3);
         controlPanelGrid.add(turboOffButton, 4);
         controlPanelGrid.add(lowerBedButton, 5);
-        controlPanelGrid.setPreferredSize(new Dimension((frame.getViewX()/2)+4, 200)); 
+        controlPanelGrid.setPreferredSize(new Dimension((frame.getViewX() / 2) + 4, 200));
         controlPanelGrid.setBackground(Color.CYAN);
-       
+
         frame.add(controlPanelGrid);
     }
-    public void makeGasInputSpinner(){
+
+    /**
+     * This is method that creates the spinner for user input of the amount of gas.
+     */
+    public void makeGasInputSpinner() {
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                gasAmount = (int) ((JSpinner) e.getSource()).getValue();
             }
         });
 
@@ -93,10 +89,10 @@ public class CarController{
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
         frame.add(gasPanel);
     }
-
-    public void addButtonsAsActionListener(){
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
+    /**
+     * This is method that adds the buttons as ActionListeners.
+     */
+    public void addButtonsAsActionListener() {
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,26 +100,29 @@ public class CarController{
             }
         });
     }
-
-    public void makeEngineButtons(){
+    
+    /**
+     * This is method that creates the start and stop buttons.
+     */
+    public void makeEngineButtons() {
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
-        startButton.setPreferredSize(new Dimension((frame.getViewX()/5)-15,200));
-        
+        startButton.setPreferredSize(new Dimension((frame.getViewX() / 5) - 15, 200));
+
         frame.add(startButton);
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
-        stopButton.setPreferredSize(new Dimension((frame.getViewX()/5)-15,200));
+        stopButton.setPreferredSize(new Dimension((frame.getViewX() / 5) - 15, 200));
 
         frame.add(stopButton);
 
-
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /*
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     */
 
     // Calls the gas method for each car once
     private void gas(int amount) {
@@ -131,5 +130,5 @@ public class CarController{
         for (IVehicle vehicle : carModel.getVehicles()) {
             vehicle.gas(gas);
         }
-    } 
+    }
 }

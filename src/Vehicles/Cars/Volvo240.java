@@ -3,8 +3,6 @@ package Vehicles.Cars;
 import java.awt.*;
 import java.math.BigDecimal;
 
-import Vehicles.Movable;
-
 public class Volvo240 implements ICar {
 
     private TrimCar trimCar;
@@ -63,5 +61,4 @@ public class Volvo240 implements ICar {
     public void setCoordsForUnloadedCar(BigDecimal transporterX, BigDecimal transporterY) {
         trimCar.setCoordsForUnloadedCar(transporterX, transporterY);
     }
-
 }

@@ -8,6 +8,4 @@ public interface ITruck extends IVehicle{
     void lowerRampToMin();
 
     boolean getRampIsInDrivingPosition();
-
-    //int getRampAngle();
 }

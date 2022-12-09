@@ -20,13 +20,13 @@ public class CarApp {
         controller.makeEngineButtons();
         
         controller.addButtonsAsActionListener();
+        
+        // To make the added buttons visible
         carView.setVisible(true);
       
-        
-  
         carModel.addVehicle(new Volvo240(500, Color.white, 0, 0));
-        carModel.addVehicle(new Saab95(300, Color.red, 0, 100));
-        carModel.addVehicle(new Scania(400, Color.black, 0, 200));
+        carModel.addVehicle(new Saab95(400, Color.red, 0, 100));
+        carModel.addVehicle(new Scania(350, Color.black, 0, 200));
     
     
         // Start the timer

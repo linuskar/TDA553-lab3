@@ -99,7 +99,6 @@ public class Scania implements ITruck, HasAngleableRamp {
 
     @Override
     public int getRampAngle() {
-        // TODO Auto-generated method stub
         return truck.getRampAngle();
     }
 }
