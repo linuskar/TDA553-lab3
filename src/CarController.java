@@ -73,7 +73,7 @@ public class CarController {
     }
 
     /**
-     * This is method that creates the spinner for user input of the amount of gas.
+     * This is a method that creates the spinner for user input of the amount of gas.
      */
     public void makeGasInputSpinner() {
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
@@ -90,7 +90,7 @@ public class CarController {
         frame.add(gasPanel);
     }
     /**
-     * This is method that adds the buttons as ActionListeners.
+     * This is a method that adds the buttons as ActionListener.
      */
     public void addButtonsAsActionListener() {
         gasButton.addActionListener(new ActionListener() {

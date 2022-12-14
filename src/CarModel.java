@@ -60,13 +60,6 @@ public class CarModel {
 
         public void actionPerformed(ActionEvent e){
             carModel.update();
-            //for (IVehicle vehicle : vehicles) {   
-                
-
-                //vehicle.move();
-                // repaint() calls the paintComponent method of the panel
-                //frame.drawPanel.repaint();
-            //}
         }
     }
 }
