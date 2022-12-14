@@ -19,15 +19,9 @@ public class Truck extends Vehicle implements ITruck, HasAngleableRamp {
         return getEnginePower() * 0.01;
     }
 
-    @Override 
-    /**  Method for changing the speed of a Truck */
-    public void gas(double amount) {
-        if (!ramp.rampIsInDrivingPosition()) {
-            throw new RampIsNotInCorrectPositionException("The ramp is not in correct position when moving");
-        } 
-        else {
-            super.gas(amount);
-        }
+    @Override
+    protected boolean validGas() {
+        return ramp.rampIsInDrivingPosition();
     }
 
     @Override

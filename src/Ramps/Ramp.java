@@ -43,11 +43,12 @@ public abstract class Ramp implements IRamp {
         ensureDegreesIsValidRange(degrees);
 
         int newAngle = getRampAngle() + degrees;
-        if (newAngle <= MAX_ANGLE) {
+        if (0 < degrees && newAngle <= MAX_ANGLE) {
             setRampAngle(newAngle);
+            setRampState(RampState.UP);
+        } else if(newAngle > MAX_ANGLE) {
+            raiseRampToMax();
         }
-
-        setRampState(RampState.UP);
     }
 
     // lower ramp from current position, can only between [0-70].
@@ -58,10 +59,12 @@ public abstract class Ramp implements IRamp {
 
         if (MIN_ANGLE < degrees && newAngle >= MIN_ANGLE) {
             setRampAngle(newAngle);
+        } else if (newAngle < MIN_ANGLE) {
+            lowerRampToMin();
         }
 
         if (getRampAngle() == MIN_ANGLE) {
-        setRampState(RampState.DOWN);
+            setRampState(RampState.DOWN);
         }
     }
 
